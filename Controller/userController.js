@@ -2,7 +2,7 @@ import { json } from "express";
 import userModel from "../Models/userModel.js";
 
 export class userController{
-    signUP=(req,res)=>{
+    async signUP(req,res){
         try{
             const {name,email,password} = req.body;
             const user =  new userModel({name, email , password});  
@@ -15,3 +15,4 @@ export class userController{
         }
     }
 }
+export default userController;
