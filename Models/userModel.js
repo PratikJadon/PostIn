@@ -20,7 +20,8 @@ const UserSchema = new mongoose.Schema([
                 return /^(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/.test(value)
             },
             message:"Password should be between 8-12 charachetrs and have a special character"
-        }
+            },
+            select:false,
         }
     }
 ])
@@ -37,6 +38,9 @@ UserSchema.methods.getJWT = function () {
     return jwt.sign({ id: this._id }, process.env.SECRET_KEY, {
       expiresIn: process.env.TOKEN_EXPIRE,
     });
+  };
+  UserSchema.methods.isValidPassword = function(givenPassword){
+    return bcrypt.compare(givenPassword, this.password);
   };
 
 export default mongoose.model("User",UserSchema);

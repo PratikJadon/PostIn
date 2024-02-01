@@ -11,13 +11,14 @@ export default class userFunction{
         newUser.password = undefined;
         return newUser;
     }
-    async signin(email){
+    async findMail(email){
         try{
-            return await  UserModel.findOne({email});
+            return await  UserModel.findOne({email}).select("+password");
         }
         catch(err){
             console.log(err);
         }
     }
+    
 }
 

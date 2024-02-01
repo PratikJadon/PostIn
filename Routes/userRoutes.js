@@ -8,6 +8,6 @@ router.post("/signup",(req,res) => {
     user.signUP(req,res);
 });
 router.get('/signin',(req,res) => {
-    user.signUP(req,res);
+    user.signIn(req,res);
 })
 export default router;
