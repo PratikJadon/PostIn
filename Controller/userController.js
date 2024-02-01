@@ -68,5 +68,30 @@ export class userController {
         .json({ message: error.message });
     }
   }
+  async getDetails(req,res){
+    const userID=req.params.id;
+    const result = await userFunction.getDetailsUser(userID);
+    if(!result){
+      return res.status(StatusCodes.NOT_FOUND).send('No User Found');
+    }
+    else{
+      return res.status(StatusCodes.ACCEPTED).send(result);
+    }
+  }
+  async getAllDetails(req,res){
+    const result = await userFunction.getAll();
+    return res.status(StatusCodes.ACCEPTED).send(result);
+  }
+  async updateUser(req,res){
+    const {name, email} = req.body;
+    const userId = req.params.id;
+    const result = await userFunction.updateUser(name,email,userId);
+    if(!result){
+      return res.status(StatusCodes.NOT_FOUND).send('No user Found');
+    }
+    else{
+      return res.status(StatusCodes.ACCEPTED).send(result).json({message:"User Updated"});
+    }
+  }
 }
 export default userController;
