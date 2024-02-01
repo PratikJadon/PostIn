@@ -56,10 +56,8 @@ export class userController {
       const result = await tokenList.removeToken(token);
       console.log(result);
       if (!result) {
-        console.log("Throwing");
-        throw new Error("Invalid Token not removed.");
+        throw new Error("Invalid Token, not removed.");
       }
-      console.log("Thrown");
       res.status(StatusCodes.ACCEPTED).json({
         success: true,
         message: "Token successfully removed from list.",
