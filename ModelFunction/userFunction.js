@@ -10,4 +10,13 @@ export default class userFunction{
         await newUser.save();
         return newUser;
     }
+    async signin(email){
+        try{
+            return await  UserModel.findOne({email});
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
 }
+
