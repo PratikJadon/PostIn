@@ -1,4 +1,4 @@
-import { UserModel } from "../Models/userModel.js";
+import UserModel from "../Models/userModel.js";
 
 export default class userFunction{
     constructor(){
@@ -8,6 +8,17 @@ export default class userFunction{
         const data = {name,password,email};
         const newUser = new UserModel(data);
         await newUser.save();
+        newUser.password = undefined;
         return newUser;
     }
+    async findMail(email){
+        try{
+            return await  UserModel.findOne({email}).select("+password");
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+    
 }
+

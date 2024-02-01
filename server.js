@@ -10,7 +10,4 @@ async function start(){
         console.log("Server is listening at 3000");
     })
 }
-
-
 start();
-
