@@ -6,9 +6,13 @@ export default class tokenListFunction {
   }
   async removeToken(userToken) {
     try {
-      await tokenListModel.findOneAndDelete({ token: userToken });
+      return (await tokenListModel.findOneAndDelete({ token: userToken })) ==
+        null
+        ? false
+        : true;
     } catch (error) {
       console.log("Failed to remove Token\n" + error);
+      return false;
     }
   }
   async addToken(userToken) {

@@ -51,10 +51,23 @@ export class userController {
   }
   async logout(req, res) {
     try {
-      const { token } = req.header.authorization;
-      await tokenList.removeToken(token);
+      const token = req.headers.authorization;
+
+      const result = await tokenList.removeToken(token);
+      console.log(result);
+      if (!result) {
+        console.log("Throwing");
+        throw new Error("Invalid Token not removed.");
+      }
+      console.log("Thrown");
+      res.status(StatusCodes.ACCEPTED).json({
+        success: true,
+        message: "Token successfully removed from list.",
+      });
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: error });
+      res
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json({ message: error.message });
     }
   }
 }
