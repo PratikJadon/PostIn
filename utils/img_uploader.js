@@ -1,8 +1,7 @@
-export default async function uploadToImgBB(imagePath) {
-  try {
-    // Read the image file
-    const imageData = fs.readFileSync(imagePath).toString("base64");
+import axios from "axios";
 
+export default async function uploadToImgBB(imageData) {
+  try {
     // Send a POST request to ImgBB API
     const response = await axios.post("https://api.imgbb.com/1/upload", {
       key: process.env.IMG_API, // Replace 'your_api_key' with your ImgBB API key
