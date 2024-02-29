@@ -5,11 +5,16 @@ export default class userFunction{
         this.UserModel = UserModel;
     }
     async signup(name, password, email){
+        if(!UserModel.findOne({email: email}))
+        {
+            console.log(UserModel.findOne({email: email}))
+            return {success: false, message: "User already exists!!!", data: null};
+        }
         const data = {name,password,email};
         const newUser = new UserModel(data);
         await newUser.save();
         newUser.password = undefined;
-        return newUser;
+        return {success: true, message: "User created successully!!!", data: newUser};
     }
     async findMail(email){
         try{

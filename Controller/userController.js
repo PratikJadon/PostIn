@@ -12,11 +12,15 @@ export class userController {
       const { name, email, password } = req.body;
       console.log(name, email, password);
       const result = await userFunction.signup(name, password, email);
-      const token = result.getJWT();
+      if(result.success === false)
+      {
+        return res.status(400).json({ message: result.message });
+      }
+      const token = result.data.getJWT();
       await tokenList.addToken(token);
       return res.status(200).json({
-        message: "User Created",
-        UserID: result._id,
+        message: result.message,
+        UserID: result.data._id,
         token: token,
       });
     } catch (err) {

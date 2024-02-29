@@ -1,8 +1,10 @@
-const postRouter = express.Router();
-import postController from "../Controller/postsController.js";
+// import express from "express";
 
-postRouter.get("/:postsID",postController.getPostByID(req,res));
-postRouter.get("/",postController.getAllPosts(req,res));
-postRouter.post("/",postController.addPost(req,res));
+// const postRouter = express.Router();
+// import postController from "../Controller/postsController.js";
 
-export default postRouter;
+// postRouter.get("/:postsID",postController.getPostByID(req,res));
+// postRouter.get("/",postController.getAllPosts(req,res));
+// postRouter.post("/",postController.addPost(req,res));
+
+// export default postRouter;
