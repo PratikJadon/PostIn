@@ -13,7 +13,8 @@ const postSchema = new mongoose.Schema([
             type : String,
         },
         totalCount:{
-            default : 0
+            type : Number,
+            default: 0
         },  
         Likes:[{type : mongoose.Types.ObjectId , ref : "User"}] 
         ,

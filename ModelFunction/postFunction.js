@@ -1,5 +1,4 @@
 import postModel from "../Models/postModel.js";
-import postModel from "../Models/postModel.js";
 
 export default class postFunction{
     constructor(){
