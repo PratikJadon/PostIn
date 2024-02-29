@@ -5,14 +5,14 @@ const postSchema = new mongoose.Schema([
       type: String,
       required: true,
     },
-    image: {
+    imgUrl: {
       type: String,
       required: true,
     },
     caption: {
       type: String,
     },
-    totalCount: {
+    totalLikes: {
       type: Number,
       default: 0,
     },

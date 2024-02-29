@@ -2,7 +2,7 @@ import app from "./index.js"
 import connectDB from "./Database/connectDB.js"
 import dotenv from "dotenv"
 
-dotenv.config()
+dotenv.config();
 
 async function start(){
     await connectDB(process.env.MONGO_URL);
